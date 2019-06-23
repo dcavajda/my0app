@@ -1,0 +1,16 @@
+/* selektor elementa */
+h1{
+color: red;	
+font-size: 2.5em;
+}
+
+/* selektor klase */
+.plavo{
+	color: #00F;
+}
+
+/* selektor identifikacije */
+
+#vazno{
+	font-weight: bold;
+}
