@@ -1,0 +1,126 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script> 
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+
+    $('.dropdown-trigger').dropdown();
+
+  });
+</script>
+
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <div><a href="#" data-target="mobile-nav" class="sidenav-trigger">
+        <i class="material-icons">menu</i></a></div>
+        <ul class="left hide-on-med-and-down">
+
+            
+
+          <li <?php echo Utility::active('/'); //ne radi ?>>
+            <a href="<?php echo App::config("url") ?>">
+                <?php echo App::config("nazivApp"); ?>
+            </a>
+          </li>
+          <li <?php echo Utility::active('/index/nadzornaPloca'); ?>>
+                <a href="<?php echo App::config("url") ?>index/nadzornaPloca">Control room</a>
+              </li>
+          <?php if(isset($_SESSION["autoriziran"])): ?>
+          </li>
+              <li <?php echo Utility::active('/index/era'); ?>>
+                <a href="<?php echo App::config("url") ?>index/era">ERA</a>
+              </li>
+          <?php if($_SESSION["autoriziran"]->uloga==="oper"): ?>
+          <li>
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
+            <ul id='dropdown1' class='dropdown-content'>
+              <li <?php echo Utility::active('/lawyers/index'); ?>>
+                <a href="<?php echo App::config("url") ?>lawyers/index">Lawyers</a>
+              </li>
+              <li <?php echo Utility::active('/clients/index'); ?>>
+                <a href="<?php echo App::config("url") ?>clients/index">Clients</a>
+              </li>
+              <li <?php echo Utility::active('/legal_cases/index'); ?>>
+                <a href="<?php echo App::config("url") ?>legal_cases/index">Legal cases</a>
+              </li>
+              <li <?php echo Utility::active('/legal_trainees/index'); ?>>
+                <a href="<?php echo App::config("url") ?>legal_trainees/index">Legal trainees</a>
+              </li>
+              <li <?php echo Utility::active('/legal_case_trainees/index'); ?>>
+                <a href="<?php echo App::config("url") ?>legal_case_trainees/index">Legal case trainees</a>
+              </li>
+            </ul>
+          </li>
+            <?php endif;?>
+          <?php endif;?>
+
+          <li <?php echo Utility::active('/index/onama'); ?>>
+            <a href="<?php echo App::config("url") ?>index/onama">About us</a>
+          </li>
+          <li <?php echo Utility::active('/index/kontakt'); ?>>
+            <a href="<?php echo App::config("url") ?>index/kontakt">Contact</a>
+          </li> 
+        
+          <li>
+          <?php if(isset($_SESSION["autoriziran"])): ?>
+            <a href="<?php echo App::config("url") ?>index/logout">Log out
+            <?php echo $_SESSION["autoriziran"]->firstnamelastname;?></a>
+          <?php else:?>
+            <a href="<?php echo App::config("url") ?>index/login">Log in</a>
+          <?php endif;?>
+          </li>
+        </div>
+      </ul>
+    
+
+      <ul class="sidenav" id="mobile-nav">
+          <li>
+          <?php if(isset($_SESSION["autoriziran"])): ?>
+            <a href="<?php echo App::config("url") ?>index/logout">Log out
+            <?php echo $_SESSION["autoriziran"]->firstnamelastname;?></a>
+          <?php else:?>
+            <a href="<?php echo App::config("url") ?>index/login">Log in</a>
+          <?php endif;?>
+          </li>
+          <?php if(isset($_SESSION["autoriziran"])): ?>
+            <li <?php echo Utility::active('/index/nadzornaPloca'); ?>>
+              <a href="<?php echo App::config("url") ?>index/nadzornaPloca">Control room</a>
+            </li>
+            <li <?php echo Utility::active('/lawyers/index'); ?>>
+              <a href="<?php echo App::config("url") ?>lawyers/index">Lawyers</a>
+            </li>
+            <li <?php echo Utility::active('/clients/index'); ?>>
+              <a href="<?php echo App::config("url") ?>clients/index">Clients</a>
+            </li>
+            <li <?php echo Utility::active('/legal_cases/index'); ?>>
+              <a href="<?php echo App::config("url") ?>legal_cases/index">Legal cases</a>
+            </li>
+            <li <?php echo Utility::active('/legal_trainees/index'); ?>>
+              <a href="<?php echo App::config("url") ?>legal_trainees/index">Legal trainees</a>
+            </li>
+            <li <?php echo Utility::active('/legal_case_trainees/index'); ?>>
+              <a href="<?php echo App::config("url") ?>legal_case_trainees/index">Legal case trainees</a>
+            </li>
+            </li>
+            <li <?php echo Utility::active('/index/era'); ?>>
+              <a href="<?php echo App::config("url") ?>index/era">ERA</a>
+            </li>
+          <?php endif;?>
+          <li <?php echo Utility::active('/'); //ne radi ?>>
+            <a href="<?php echo App::config("url") ?>">
+                <?php echo App::config("nazivApp"); ?>
+            </a>
+          </li>
+          <li <?php echo Utility::active('/index/onama'); ?>>
+            <a href="<?php echo App::config("url") ?>index/onama">About us</a>
+          </li>
+          <li <?php echo Utility::active('/index/kontakt'); ?>>
+            <a href="<?php echo App::config("url") ?>index/kontakt">Contact</a>
+          </li> 
+      </ul>
+    
+  </nav>
+</body>
+<br/>
+        
