@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col l8 offset-l2 s12 ">
+        <fieldset class="fieldset">
+            <legend>Popunite tražene podatke</legend>
+
+            <label for="legal_case">Legal case</label>
+            <select name="legal_case" id="legal_case">
+                <option value="0">Choose legal case</option>
+                <?php foreach($legal_cases as $legal_case): ?>
+                    <option           
+                    <?php echo App::param("legal_cases")==$legal_case->legal_case_id? 'selected="selected"' : ''; ?>
+                    value="<?php echo $legal_case->legal_case_id; ?>">
+                        <?php echo $legal_case->legal_case; ?>
+                    </option>
+            <?php endforeach; ?>
+            </select>  
+
+            <label for="">Legal trainee</label>
+            <select name="legal_trainee" id="legal_trainee">
+                <option value="0">choose legal_trainee</option>
+                <?php foreach($legal_trainees as $legal_trainee): ?>
+                    <option             
+                    <?php echo App::param("legal_trainee")==$legal_trainee->legal_trainee_id ? 'selected="selected"' : ''; ?>           
+                    value="<?php echo $legal_trainee->legal_trainee_id; ?>">
+                        <?php echo $legal_trainee->legal_trainee; ?>
+                    </option>
+            <?php endforeach; ?>
+            </select>
+
+
+        </fieldset>
+        <br/>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+
+<a href="<?php echo App::config("url") ?>legal_case_trainees/pripremaNovi" 
+class="btn btn-block waves-effect waves-light"">
+<i class="material-icons left">add_box</i> Add new case</a>
+</a>
+
+
+<fieldset   class="fieldset">      
+  <table id="tablicaSmjerovi" >
+  <div>
+    <h5 class="center-align">Legal cases in your office</h5>
+  </div>
+    <table id="tablicaSmjerovi"class=striped>
+    <thead>
+      <tr>       
+        <th>Legal case:</th>
+        <th>Legal trainee:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($legal_case_trainees as $legal_case_trainee): ?>
+        <tr>
+          <td><?php echo $legal_case_trainee->legal_case?></td>
+          <td><?php echo $legal_case_trainee->legal_trainee?></td>
+          <td>
+          <a title="promjeni <?php echo $legal_case_trainee->legal_case_trainee_id
+              ?>" 
+              href="<?php 
+              echo App::config("url") 
+              ?>legal_case_trainees/pripremaPromjeni/<?php echo $legal_case_trainee->legal_case_trainee_id ?>">
+              <i class="fas fa-edit fa-2x" style="color: orange"></i>
+          </a>
+            <a title="Obriši <?php echo $legal_case_trainee->legal_case_trainee_id ?>" 
+              onclick="return confirm('Sigurno obrisati <?php echo $legal_case_trainee->legal_case_trainee_id ?>?');"
+              href="<?php 
+              echo App::config("url") 
+              ?>legal_case_trainees/brisanje/<?php echo $legal_case_trainee->legal_case_trainee_id ?>">
+              <i class="fas fa-trash fa-2x" style="color: red"></i>
+              </a>
+          </td>
+        </tr>
+      <?php endforeach;?>
+    </tbody>
+  </table>
+</fieldset>

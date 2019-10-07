@@ -1,39 +1,29 @@
-<!doctype html>
+<?php
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+session_start();
 
-  <title>The HTML5 Herald</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
+// definiram basepath - apsolutnu putanju mog direktorija
+define("BP",__DIR__ . DIRECTORY_SEPARATOR );
 
-  <link rel="stylesheet" href="stil.css">
-  
-  <style>
-  .plavo{
-	color: rgb(0,0,200);
-  }
-  </style>
+//echo BP;
 
-</head>
+error_reporting(E_ALL);
+ini_set("display_errors",1);
 
-<body>
-	<h1>Hello</h1>
-	<p class="plavo">ovo je paragraf</p>
-	<div>
-		<p id="vazno">ovo je drugi paragraf</p>
-	</div>
-	<h1 class="plavo" style="color: blue">Drugi</h1>
-	
-	
-	<?php 
-	
-	phpinfo();
-	
-	?>
-	
-	
-  <script src="skripta.js"></script>
-</body>
-</html>
+//navodim direktorije u kojima ću autoload datoteke
+$t = implode(PATH_SEPARATOR,
+            [
+                BP . "app" . DIRECTORY_SEPARATOR . "model",
+                BP . "app" . DIRECTORY_SEPARATOR . "controller"
+            ]
+            );
+
+//var_dump($t);
+
+set_include_path($t);
+spl_autoload_register(function($klasa)
+{
+    $putanja = strtr($klasa,"\\",DIRECTORY_SEPARATOR) . ".php";
+    return include $putanja;
+});
+App::start();

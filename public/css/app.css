@@ -1,0 +1,30 @@
+
+legend {
+    margin:0 auto;
+}
+
+
+.btn-block {
+    width: 100%;
+}
+
+
+#container
+{
+    margin-top:15px;
+}
+.card-content {
+    text-align: center; 
+    padding: 0px !important;
+}
+.card{
+    transition: .5s;
+}
+.card:hover{
+    transform:scale(1.05);
+}
+
+#program{
+    min-height: 455px;
+    background-color: azure;
+  }

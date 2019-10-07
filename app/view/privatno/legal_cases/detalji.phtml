@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col l8 offset-l2 s12 ">
+        <fieldset class="fieldset">
+            <legend>Popunite tražene podatke</legend>
+
+            <label for="client">Client</label>
+            <select name="client" id="client">
+                <option value="0">Choose client</option>
+                <?php foreach($clients as $client): ?>
+                    <option           
+                    <?php echo App::param("client")==$client->client_id ? 'selected="selected"' : ''; ?>
+                    value="<?php echo $client->client_id; ?>">
+                        <?php echo $client->client; ?>
+                    </option>
+            <?php endforeach; ?>
+            </select>  
+
+            <label for="">Lawyer</label>
+            <select name="lawyer" id="lawyer">
+                <option value="0">choose lawyer</option>
+                <?php foreach($lawyers as $lawyer): ?>
+                    <option             
+                    <?php echo App::param("lawyer")==$lawyer->lawyer_id ? 'selected="selected"' : ''; ?>           
+                    value="<?php echo $lawyer->lawyer_id; ?>">
+                        <?php echo $lawyer->firstnamelastname; ?>
+                    </option>
+            <?php endforeach; ?>
+            </select>
+
+
+            <label for="legal_case_start">Case_date_start</label>
+            <input type="datetime-local" name="legal_case_start" id="legal_case_start" 
+            value="<?php echo App::param("legal_case_start") ?>"/>
+
+
+            <label for="legal_case_end">Case_date_end</label>
+            <input type="datetime-local" name="legal_case_end" id="legal_case_end" 
+            value="<?php echo App::param("legal_case_end") ?>"/>
+
+
+            <?php echo Utility::inputText(
+            isset($greska) ? $greska : null,'legal_case_code','legal_case_code');?>
+
+
+        </fieldset>
+</div>
+</div>

@@ -1,0 +1,47 @@
+<a href="<?php echo App::config("url") ?>legal_trainees/pripremaNovi" 
+class="btn btn-block waves-effect waves-light">
+<i class="material-icons left">add_box</i> Add new Legal trainee</a>
+</a>
+<div id="container">
+  <div class="row">
+        <?php foreach($legal_trainees as $legal_trainee): ?>
+          <div class="col s12 m4 grey lighten-4">
+            <div class= "center-align">
+              <div class="card">
+                <div class="card-content">
+                    <div class="card-title grey lighten-4 black-text">
+                    <h5>Legal trainee information</h5>
+                    </div>
+                    <img src="<?php echo App::config("url") ?>public/img/nepoznataOsoba.png">
+                    <ul class="collection">
+                    <li>Firstname: <?php echo $legal_trainee->firstname?></li>
+                    <li>Lastname: <?php echo $legal_trainee->lastname?></li>
+                    <li>OIB: <?php echo $legal_trainee->OIB?></li>
+                    <li>IBAN: <?php echo $legal_trainee->IBAN?></li>
+                    </ul>
+
+                      <div>
+                    
+                      <a title="Obriši <?php echo $legal_trainee->legal_trainee_id ?>" 
+                      onclick="return confirm('Sigurno obrisati <?php echo $legal_trainee->legal_trainee_id ?>?');"
+                      href="<?php 
+                      echo App::config("url") 
+                      ?>legal_trainees/brisanje/<?php echo $legal_trainee->legal_trainee_id ?>">
+                      
+                      <div class="btn btn-block btn-large red accent-2">Delete Legal trainee</div>
+                      </a>
+                      <a title="promjeni <?php echo $legal_trainee->firstname ?>" 
+                      href="<?php echo App::config("url")?>legal_trainees/pripremaPromjeni/
+                      <?php echo $legal_trainee->legal_trainee_id ?>">
+                      <div class="btn btn-block btn-large yellow accent-4">Change information</div>
+                      </a>
+                         
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endforeach;?>  
+  </div>
+</div>
+

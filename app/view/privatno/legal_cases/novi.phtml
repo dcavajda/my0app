@@ -1,0 +1,23 @@
+<form method="post" 
+
+    action="<?php echo App::config("url")?>legal_cases/novi">
+
+    <?php include_once 'detalji.phtml' ?>
+
+    <div class="row">
+    <div class="col l3 offset-l3 s6">
+        <a class="btn btn-block waves-light"
+         href="<?php echo App::config("url")?>legal_cases/index">
+            Back to Legal cases
+
+            </a>
+            </div>
+            <div class="row">
+                <div class="col l3 s6">
+                <input class="btn btn-block white-text waves-light "
+                type="submit" value="Add new data">
+            </div>
+        </div>
+
+   
+</form>
